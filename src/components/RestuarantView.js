@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Image, ListGroup, Button, Modal } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import RestReviews from './RestReviews';
 
 
 const RestuarantView = () => {
@@ -46,6 +47,7 @@ const RestuarantView = () => {
                   <Button onClick={handleShow}>
                      Show More
                   </Button>
+                   <RestReviews reviews={restaurant.reviews}/>
                 </ListGroup.Item>
               </ListGroup>
 
