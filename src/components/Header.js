@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Link style={{ color: 'white', textDecoration: 'none' }} to='' >
+        <Link style={{ color: 'white', textDecoration: 'none'}} to='' >
           <Navbar.Brand >
             <img
               alt=""
