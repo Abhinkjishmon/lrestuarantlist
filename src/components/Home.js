@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import RestuarantCard from './RestuarantCard';
-import './Home.css'
+import './Home.css';
+import { RestuarantsList } from '../Actions/homeAction';
+import { useDispatch } from 'react-redux';
 
 
 const Home = () => {
@@ -16,8 +18,11 @@ const Home = () => {
         });
     }
     console.log(restaurants);
+
+    const dispatch = useDispatch()
     useEffect(() => {
-        fetchData()
+        // fetchData()
+        dispatch(RestuarantsList())
     }, [])
 
 
