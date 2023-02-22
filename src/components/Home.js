@@ -3,7 +3,8 @@ import { Row, Col } from 'react-bootstrap';
 import RestuarantCard from './RestuarantCard';
 import './Home.css';
 import { RestuarantsList } from '../Actions/homeAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 const Home = () => {
@@ -11,12 +12,12 @@ const Home = () => {
     const [restaurants, setRestuarants] = useState([])
 
     //function to get data from api 
-    const fetchData = async () => {
-        const result = await fetch('/restuarants.json')
-        result.json().then(data => {
-            setRestuarants(data.restaurants);
-        });
-    }
+    // const fetchData = async () => {
+    //     const result = await fetch('/restuarants.json')
+    //     result.json().then(data => {
+    //         setRestuarants(data.restaurants);
+    //     });
+    // }
     console.log(restaurants);
 
     const dispatch = useDispatch()
@@ -25,6 +26,8 @@ const Home = () => {
         dispatch(RestuarantsList())
     }, [])
 
+    const result = useSelector(state=>state.restuarantReducer)
+    console.log(result);
 
     return (
         <Row>
