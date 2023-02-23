@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
     //state to hold data from api call
-    const [restaurants, setRestuarants] = useState([])
+    //const [restaurants, setRestuarants] = useState([])
 
     //function to get data from api 
     // const fetchData = async () => {
@@ -18,7 +18,7 @@ const Home = () => {
     //         setRestuarants(data.restaurants);
     //     });
     // }
-    console.log(restaurants);
+    // console.log(restaurants);
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -26,13 +26,13 @@ const Home = () => {
         dispatch(RestuarantsList())
     }, [])
 
-    const result = useSelector(state=>state.restuarantReducer)
-    console.log(result);
+    const {restuarants} = useSelector(state=>state.restuarantReducer)
+    console.log(restuarants);
 
     return (
         <Row>
             {
-                restaurants.map(item => (
+                restuarants.map(item => (
                     <Col className='py-3' sm={6} md={4} lg={3}>
                         <RestuarantCard restaurant={item}/>
                     </Col>

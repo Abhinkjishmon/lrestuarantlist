@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { Col, Row, Image, ListGroup, Button, Modal } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import RestReviews from './RestReviews';
+import { RestuarantsList } from '../Actions/homeAction';
+
 
 
 const RestuarantView = () => {
-  const [restaurants, setRestaurants] = useState([])
+  // const [restaurants, setRestaurants] = useState([])
   const params = useParams()
   console.log(params.id);
 
@@ -15,17 +18,23 @@ const RestuarantView = () => {
   const handleShow = () => setShow(true);
 
 
-  const fetchData = async () => {
-    const res = await fetch('/restuarants.json')
-    res.json().then((data) => {
-      setRestaurants(data.restaurants)
-    })
-  }
-  console.log(restaurants);
-  useEffect(() => {
-    fetchData()
-  }, [])
-  const restaurant = restaurants.find(item => (item.id == params.id))
+  // const fetchData = async () => {
+  //   const res = await fetch('/restuarants.json')
+  //   res.json().then((data) => {
+  //     setRestaurants(data.restaurants)
+  //   })
+  // }
+  // console.log(restaurants);
+  // useEffect(() => {
+  //   // fetchData()
+  // }, [])
+  const dispatch =useDispatch()
+  useEffect(()=>{
+    dispatch(RestuarantsList())
+  },[])
+  const {restuarants} = useSelector(state=>state.restuarantReducer)
+  console.log(restuarants);
+  const restaurant = restuarants.find(item => (item.id == params.id))
   console.log(restaurant);
   return (
     <>
